@@ -1,68 +1,13 @@
 
 // Fonts
-@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700');
 
 // Variables
 @import "variables";
-@import "header";
 
-// Bootstrap
-// @import '~bootstrap/scss/bootstrap';
+// Ep 1 to 2
+// @import "./Ep1to2/header";
+// @import "./Ep1to2/body"
 
-body {
-  font-family: 'Open Sans', sans-serif;
-}
-
-a {
-  text-decoration: none;
-  color: #222222;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-.flex,
-.row {
-  display: flex;
-}
-
-.row {
-  margin-left: -10px;
-  margin-right: -10px;
-}
-
-.col {
-  flex: 1;
-  padding: 10px;
-}
-
-.box {
-  background: #e3e3e3;
-  height: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.section {
-  padding: 30px;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-nav  {
-  display: flex;
-  justify-content: center;
-}
-
-// '>' means all a tag that direct child of nav
-nav > a {
-  padding-left: 20px;
-  padding-right: 20px;
-  text-transform: uppercase;
-  color:rgba($color: #ffffff, $alpha: 0.5)
-}
+// Ep 3
+@import  "./Ep3/card";
