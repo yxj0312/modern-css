@@ -1,25 +1,6 @@
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);body {
-  font-family: 'Open Sans', sans-serif;
-}
-
-a {
-  text-decoration: none;
-  color: #222222;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-header {
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);header {
   background-image: -webkit-gradient(linear, left top, right top, from(#a25b5b), to(#692e4c));
   background-image: linear-gradient(to right, #a25b5b, #692e4c);
-  padding: 1.5em 2em;
 }
 
 header h1 {
@@ -41,6 +22,61 @@ header h1 {
 
 .header-top a {
   color: inherit;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: #222222;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.flex,
+.row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.row {
+  margin-left: -10px;
+  margin-right: -10px;
+}
+
+.col {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  padding: 10px;
+}
+
+.box {
+  background: #e3e3e3;
+  height: 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.section {
+  padding: 30px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 nav {
