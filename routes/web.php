@@ -19,3 +19,8 @@ Route::get('/card', function () {
     return view('card');
 });
 
+
+Route::get('/card-tailwind', function () {
+    return view('card-tailwind');
+});
+
