@@ -25,11 +25,17 @@ Route::get('/card-tailwind', function () {
     return view('card-tailwind');
 });
 
+// Ep5
 Route::get('/ep5', function () {
     return view('flexbox');
 });
 
 Route::get('/ep5.1', function () {
     return view('sticky');
+});
+
+// Ep7
+Route::get('/ep7', function () {
+    return view('pricing');
 });
 
