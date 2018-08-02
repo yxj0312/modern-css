@@ -5,6 +5,11 @@
 // Variables
 @import "variables";
 
+@tailwind preflight;
+@tailwind components;
+@tailwind utilities;
+
+
 // Ep 1 to 2
 // @import "./Ep1to2/header";
 // @import "./Ep1to2/body"
