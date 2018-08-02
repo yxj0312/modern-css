@@ -3112,6 +3112,10 @@ table {
   font-family: Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
 }
 
+.font-body {
+  font-family: Open Sans;
+}
+
 .font-hairline {
   font-weight: 100;
 }
@@ -6359,6 +6363,22 @@ body {
   color: inherit;
 }
 
+.btn {
+  text-decoration: none;
+  text-transform: uppercase;
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  border-radius: 9999px;
+  font-size: .75rem;
+}
+
+.btn-blue {
+  background-color: #3490dc;
+  color: #fff;
+}
+
 @media (min-width: 576px) {
   .sm\:list-reset {
     list-style: none;
@@ -8805,6 +8825,10 @@ body {
 
   .sm\:font-mono {
     font-family: Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
+  }
+
+  .sm\:font-body {
+    font-family: Open Sans;
   }
 
   .sm\:font-hairline {
@@ -14461,6 +14485,10 @@ body {
     font-family: Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
   }
 
+  .md\:font-body {
+    font-family: Open Sans;
+  }
+
   .md\:font-hairline {
     font-weight: 100;
   }
@@ -20115,6 +20143,10 @@ body {
     font-family: Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
   }
 
+  .lg\:font-body {
+    font-family: Open Sans;
+  }
+
   .lg\:font-hairline {
     font-weight: 100;
   }
@@ -25767,6 +25799,10 @@ body {
 
   .xl\:font-mono {
     font-family: Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
+  }
+
+  .xl\:font-body {
+    font-family: Open Sans;
   }
 
   .xl\:font-hairline {

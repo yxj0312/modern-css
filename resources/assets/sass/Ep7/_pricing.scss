@@ -1,0 +1,7 @@
+.btn {
+  @apply .no-underline .uppercase .py-3 .px-6 .rounded-full .text-xs;
+}
+
+.btn-blue {
+  @apply .bg-blue .text-white;
+}

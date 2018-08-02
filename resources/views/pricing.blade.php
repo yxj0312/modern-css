@@ -8,27 +8,22 @@
 
     <title>Pricing Plans</title>
 
-    <!-- Fonts -->
-    {{-- <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet"> --}}
     <link rel="stylesheet" href="/css/app.css">
 </head>
 
-<body class="font-serif">
-    <div>
-        {{-- A Single Plan --}}
-        <div>
-            <h5>Monthly</h5>
+<body class="font-body p-6">
+    <div class="container mx-auto">
+       <div class="flex">
+            @include('plan')
+            {{-- @include('plan',['name' => 'Monthly']) --}}
 
-            <span>$15</span>
-        </div>
+            @include('plan')
 
-        <img src="/image/marketing.png">
+            @include('plan')
 
-        <p>
-            Still undecided? Ease in with a monthly plan that can be canceled in ten seconds.
-        </p>
-
-        <a href="#">Start Learning</a>
+            @include('plan')
+       </div>
     </div>
 </body>
+
 </html>
