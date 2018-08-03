@@ -39,3 +39,8 @@ Route::get('/ep7', function () {
     return view('pricing');
 });
 
+// Ep9
+Route::get('/ep9', function () {
+    return view('signup-banner');
+});
+
