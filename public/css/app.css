@@ -6394,6 +6394,12 @@ body {
   padding: .75rem;
 }
 
+@media (min-width: 768px) {
+  .home-skills-section {
+    width: 150px;
+  }
+}
+
 @media (min-width: 576px) {
   .sm\:list-reset {
     list-style: none;

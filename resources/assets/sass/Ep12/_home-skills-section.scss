@@ -1,0 +1,11 @@
+ @screen md { 
+    .home-skills-section {
+        // Option 1
+        // @media (min-width: 576px) {
+        //     width: 150px;
+        // }
+
+        // option 2
+        width: 150px;
+    }
+ }
