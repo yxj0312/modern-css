@@ -49,3 +49,9 @@ Route::get('/ep9', function () {
 Route::get('/ep10', function () {
     return view('responsive-demo-1');
 });
+
+// Ep11
+Route::get('/ep11', function () {
+    return view('responsive-demo-2');
+});
+
