@@ -44,3 +44,8 @@ Route::get('/ep9', function () {
     return view('signup-banner');
 });
 
+
+// Ep10
+Route::get('/ep10', function () {
+    return view('responsive-demo-1');
+});
