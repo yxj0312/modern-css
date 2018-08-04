@@ -1,4 +1,10 @@
-.signup-banner{
-    background-image:radial-gradient(circle at 0 100%, #6585b0, #2e4469);
-    height: 600px;
+.signup-banner {
+    background-image: radial-gradient(circle at 0 100%, #6585b0, #2e4469);
+    .tw-container {
+        height: 600px !important;
+        background-image: url('/image/bg_img_1.jpeg'), url('/image/bg_img_3.jpeg'), url('/image/bg_img_2.jpeg');
+        background-repeat: no-repeat;
+        // 100% from the left, 100% from the top
+        background-position: 0 100%, 0 0, 100% 100%;
+    }
 }
