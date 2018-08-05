@@ -91,9 +91,10 @@ public function handle(){
         return $this->release(2)
     })
 }
+```
 
-<!-- It will be very useful to use the retryUntil method because you don't relly know how long it's gonna be before you can acquire a log you might try you job ten times before a lot becomes available so it's a little bit eaiser to think of it in terms of a time-based timeout instead of  an attempt space timeout beacuase you could have in a lot of attempts without something neccessarily being wrong -->
-
+It will be very useful to use the retryUntil method because you don't relly know how long it's gonna be before you can acquire a log you might try you job ten times before a lot becomes available so it's a little bit eaiser to think of it in terms of a time-based timeout instead of  an attempt space timeout beacuase you could have in a lot of attempts without something neccessarily being wrong
+```php
 public function retryUntil() {
 
 }
