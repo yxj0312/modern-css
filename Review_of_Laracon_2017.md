@@ -3,7 +3,7 @@
 ### Schedule: 2017.8.29 17:00
 ### Duration: 53:42
 ### Links: [Taylor Otwell - State of Laravel - Laracon EU 2017](https://www.youtube.com/watch?v=2pLL00WR5iU&index=12&list=PLMdXHJK-lGoBFZgG2juDXF6LiikpQeLx2)
-### Component:
+### Contents:
 #### Opening:
 - in live code the  whole time
 - laravel 5.5 stuffs
@@ -97,5 +97,132 @@ It will be very useful to use the retryUntil method because you don't relly know
 ```php
 public function retryUntil() {
 
+}
+```
+
+- 12:02 - throttle: ThrottleRequestWithRedis
+
+> better performance if you're using redis
+
+- 13:22 - carbon
+
+> extend carbon with our own illuminate support carbon
+- macro
+```php
+<!-- define a macro to get UNIX timestamp-->
+Route::get('/carbon', functioni(){
+    Illuminate\Support\Carbon::macro('unix', function(){
+        return $this->format('U');
+    });
+
+    return now()->addYears(1)->unix();
+    return today('UTC')->addYears(1)->unix();
+})
+```
+- json serializable
+```php
+Route::get('/carbon-json', function(){
+    Illuminate\Support\Carbon::serializeUsing(function ($carbon){
+        return $carbon->toDateTimeString();
+    });
+
+    $array=[
+        'id' => 1,
+        'created_at' => now(),
+    ];
+
+    return $array;
+})
+```
+
+- 15:30 - responsable objects...
+```php
+use Illuminate\Contracts\Support\Responsable;
+
+class SomeResponse implements Responsable
+{
+    public function toResponse($request)
+    {
+        return response('Hello Responsable.');
+    }
+}
+<!-- return it directly from a router controller -->
+Route::get('/responsable', function(){
+    return new SomeResponse;
+})
+```
+> why that is cool?
+
+could be used to build such as a model transformation layer for your apis
+
+```php
+use App\Http\Resources\User as UserResource;
+
+Route::get('/resource', function() {
+    return new UserResource(User::find(1));
+})
+
+<!-- in UserResource -->
+
+public function toArray($request)
+{
+    // don't have password, because don't wanna provide that in the api
+    return [
+        'id' => $this->id,
+        'name' => $this->name,
+        'email' => $this->email,
+        'created_at' => $this->created_at,
+        'updated_at' => $this->updated_at
+    ];
+}
+
+<!-- can also combine the carbon serialziation stuffs -->
+
+Illuminate\Support\Carbon::serializeUsing(function ($carbon){
+    // no more timezone and timezone_type in the returning 'created_at' and 'updated_at'
+    return $carbon->toDateTimeString();
+});
+```
+
+- fresh models
+```php
+Route::get('/create', function(){
+    // Note: 201 returned for freshly created models...
+    return new UserResouce(factory(User::class)->create());
+});
+```
+- returning multiple resources...
+```php
+Route::get('/all', function(){
+    return UserResource::collection(User::all());
+});
+```
+
+- collection resource classes...
+```php
+use App\Http\Resources\UserCollection;
+
+Route::get('/collection', function(){
+    return new UserCollection(User::all());
+});
+
+<!-- in UserCollection -->
+
+use Illuminate\Http\Resources\Json\ResourceCollection;
+
+class UserCollection extends ResourceCollection
+{
+    // Transform the resource collection into an array.
+    public function toArray($request)
+    {
+        // return parent::toArray($request);
+        return [
+            'data' => $this->collection,
+            // now u have some extra metadata 'links'
+            'links' => [
+                'some-link' => 'value',
+            ]
+        ];
+    }
 }
 ```
