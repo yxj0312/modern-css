@@ -60,3 +60,8 @@ Route::get('/ep12', function () {
     return view('responsive-demo-3');
 });
 
+// Ep13
+Route::get('/ep13', function () {
+    return view('better-sizing-and-spacing');
+});
+

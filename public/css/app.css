@@ -6400,6 +6400,16 @@ body {
   }
 }
 
+.ep13-html {
+  font-size: 12px;
+}
+
+@media (min-width: 992px) {
+  .ep13-html {
+    font-size: 16px;
+  }
+}
+
 @media (min-width: 576px) {
   .sm\:list-reset {
     list-style: none;
