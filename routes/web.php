@@ -65,3 +65,8 @@ Route::get('/ep13', function () {
     return view('better-sizing-and-spacing');
 });
 
+// Ep14
+Route::get('/ep14', function () {
+    return view('reverse-the-order');
+});
+
