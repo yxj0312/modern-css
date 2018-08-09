@@ -70,3 +70,9 @@ Route::get('/ep14', function () {
     return view('reverse-the-order');
 });
 
+// Ep15
+Route::get('/ep15', function () {
+    return view('make-it-sticky');
+});
+
+
