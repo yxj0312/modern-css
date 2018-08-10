@@ -75,4 +75,9 @@ Route::get('/ep15', function () {
     return view('make-it-sticky');
 });
 
+// Ep16
+Route::get('/ep16', function () {
+    return view('wield-control');
+});
+
 
