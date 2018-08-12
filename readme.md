@@ -3,3 +3,6 @@
 
 # ES2015 Crash Course
 ## [Links](https://laracasts.com/series/es6-cliffsnotes)
+
+# Learn Laravel Mix
+## [Links](https://laracasts.com/series/learn-laravel-mix)
