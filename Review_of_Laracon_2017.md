@@ -199,6 +199,7 @@ Route::get('/all', function(){
 ```
 
 - collection resource classes...
+
 ```php
 use App\Http\Resources\UserCollection;
 
@@ -225,4 +226,197 @@ class UserCollection extends ResourceCollection
         ];
     }
 }
+```
+> we hava a user collection, we gonna load all the users and we gonna eager load in all the roles
+
+```php
+<!-- Another example -->
+
+class Role extends Resource
+{
+    public function toArray($request)
+    {
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+        ];
+    }
+}
+
+<!-- three ways -->
+Route::get('/with',function(){
+    return new UserCollection(User::all()->load('roles'));
+
+    return new RoleResource(Role::find(1));
+
+    return (new UserCollection(User::all()->load('roles')))
+            ->additional(['meta' => [
+                'key' => 'value'
+            ]]);
+})
+
+<!-- in User Rescource -->
+
+public function toArray($request)
+{
+    return [
+        'id' => $this->id,
+        'name' => $this->name,
+        'email' => $this->email,
+        'roles' => Role::collection($this->roles),
+        'created_at' => $this->created_at,
+        'updated_at' => $this->updated_at,
+    ];
+}
+
+<!-- json results: -->
+{
+    "data": [
+        {
+            "id": 1,
+            "name": "123",
+            "email": "123@123.com"
+            "roles": [
+                {
+                    "id": 1,
+                    "name": "Editor"
+                }
+            ],
+            "created_at": "",
+            "update_at": "",
+        },
+    ]
+}
+```
+- with method in resouce
+
+```php
+public function with($request)
+{
+    return  [
+        'meta' => [
+            'key' => 'value'
+        ],
+    ];
+}
+
+<!-- json results: -->
+{
+    "data": {
+        "id": 1,
+        "name": "Editor"
+    },
+    "meta": {
+        "key": "value"
+    }         
+},
+```
+- Collection: pagination
+
+- "Data" wrapping
+```php
+Route::get('/wrapping', function() {
+    Resource::withoutWrapping();
+
+    return new UserCollection(User::all()->load('posts'));
+
+    return new PostCollection(Post::all());
+
+    return new UserCollection(usr::paginate());
+})
+```
+> withWrapping: all of them have been wrapped with data on the outside like:
+```php
+{
+    "data":[
+        {
+            "id": 1,
+            ...
+        }
+    ]
+}
+```
+>without:
+```php
+[
+    {
+        "id" : 1,
+        ...
+        ...
+    }
+]
+```
+> laravel can check things like 'data.data' and prevent them.
+
+> even if u use withoutwrapping, there are still a data in your pagination collection.
+
+- 31:32 - resources can return  a JSON serializable object
+
+```php
+class JsonApiResource implements JsonSerializable
+{
+     public function __constuct($resource)
+     {
+         $this->resource = $resource;
+     }
+
+     public function jsonSerialize()
+     {
+         return [
+            'id' => $this->resource->id,
+         ];
+     }
+}
+
+<!-- in resource -->
+public function toArray($request)
+{
+    return new \JsonApiResource($this->resource);    
+}
+```
+
+- 33:12 Customizing the response (like header)
+```php
+Route::get('/response', function() {
+    return (new UserCollection(User::all()))
+        ->response()
+        ->header('X-Conference','Laracon EU 2017');
+    
+
+    return new UserCollection(User::all());
+})
+
+<!-- 2nd Way to do it , on the usercollection -->
+public function withResponse($request, $response)
+{
+    $response->header('X-Conference','Laracon EU 2017');
+}
+```
+
+- 34:35 -  Cleaning up conditionals
+```php
+<!-- in collection toArray  if u do like the followings -->
+'secret' => $this->isAdmin() ? 'value' : null,
+<!-- U will get the 'secret' all the time, even 'isAdmin' is false, u will get a null value -->
+
+<!-- Instead we can do this-->
+'secret' => $this->when($this->isAdmin(), 'secret-value')
+<!-- in this case, 'secret' will be entirely removed from the array -->
+```
+- for multiple values
+```php
+$this->mergeWhen($this->isAdmin(), [
+    'secret1' => 'value',
+    'secret2' => 'value',
+]),
+```
+> this could also take a closure, do some expensive calculation or DB call
+
+```php
+$this->mergeWhen($this->isAdmin(), function (){
+    return [    
+        'secret1' => 'value',
+        'secret2' => 'value',
+    ];
+}),
 ```
