@@ -119,6 +119,9 @@ Route::get('/carbon', functioni(){
     return today('UTC')->addYears(1)->unix();
 })
 ```
+
+### Api Transformation 
+
 - json serializable
 ```php
 Route::get('/carbon-json', function(){
@@ -420,3 +423,36 @@ $this->mergeWhen($this->isAdmin(), function (){
     ];
 }),
 ```
+- also useful in relationships
+
+> what if I want to always show the blog posts for the users in this response
+```php
+Route::get('/relations', function () {
+    // way 1
+    return new UserCollection(User::all());
+
+    // way 2,'whenLoaded'
+    return new UserCollection(User::all()->load('posts'));
+})
+```
+one way: in collection toArray add:
+```php
+'posts' => new PostCollection($this->posts)
+```
+Now we get the post everytime. This can cause problem, because it can lead to n+1 problems on your API transform where every user is pulling all of its posts individually and you're sort of not eager loading. You could be gonna have a lot of extra database queries.
+
+Instead,  we can do this:
+```php
+'posts' => new PostCollection($this->whenLoaded('posts'))
+```
+which means, I only want to include the posts when they're already been loaded when they're already on this user
+
+- pivot table
+
+this can also used for pivot table.
+```php
+'expires_at' => $this->whenPivotLoaded('role_users', function(){
+    return $this->pivot->expires_at; 
+})
+```
+### FAQ
