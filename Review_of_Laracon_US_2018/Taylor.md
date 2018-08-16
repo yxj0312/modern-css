@@ -24,3 +24,13 @@
     - a single pageview application
     - using tailwind css
     - laravel json api feeding all this data
+    - CRUD scenarios (10:13 - 17:41)
+    - data field
+        - timezone auto offset with DB and browser time (~19:11)
+        - blog text area: 
+            - markdown/Trix editor
+            - Code field: display json data(or other language like php)
+                ```php
+                Code::make('Options')->json()->rules('json')
+                ```
+    - file field: for file upload (begin at 23:46)
