@@ -34,3 +34,11 @@
                 Code::make('Options')->json()->rules('json')
                 ```
     - file field: for file upload (begin at 23:46)
+        - got image preview
+        - got overwrite hook
+        - prunable():if only delete the resource, the underlying file in the storage system will also be deleted
+    - belongsTo field: dropdown menu can be searchable
+        - use laravel scout
+        - algolia or other search system are also supported
+    - global search: can search all of the resources
+    - place field:
