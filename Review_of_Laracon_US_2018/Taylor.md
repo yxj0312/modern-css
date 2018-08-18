@@ -41,4 +41,44 @@
         - use laravel scout
         - algolia or other search system are also supported
     - global search: can search all of the resources
-    - place field:
+    - place field: tracking address(built by algolia)
+        ```php
+        Place::make('Address','address_line_1')
+        ```
+    - relationship
+        - many to many: do well with pivot table column
+        - polyMorph
+        - softdeleting: 'withTrashed' option button to show the trashed results
+    - avatar can be cached and searched
+    - own filter: will be avaiable by all tables and search
+        - have CLI generator for it
+    - lenses: similar to filter, but more a radical way of looking at a resource
+        - i.e. a lense called most valuable users
+          ```php
+          public static function query(LensRequest $request, $query)
+          {
+              return $request->withOrdering($request->withFilters(
+                query->select('users.id', 'users.name', 
+                        DB::raw('sum(licenses.price) as revenue'))
+                    ->join('licenses', 'users.id', '=', 'licenses.user_id')
+                    ->orderBy('revenue', 'desc')
+                    ->groupBy('users.id', 'users.name')
+              ));
+          }
+          ```
+          click this will jump to a new view of users
+          and filter is still reused, attach all the filter
+    - actions: i.e a new action: deactivate
+        ```php
+        <!-- in User -->
+        public function actions(Request $request)
+        {
+            return [
+                new Actions\Deactivate,
+            ]
+        }
+        ```
+        - not only for tables, but also for single user
+        - actionable trait for indication all your actions
+        - can also attach to pivot table
+        
