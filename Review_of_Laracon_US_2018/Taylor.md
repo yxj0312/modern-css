@@ -81,4 +81,7 @@
         - not only for tables, but also for single user
         - actionable trait for indication all your actions
         - can also attach to pivot table
+
+            -- Play WOW all the day and already 120 --
+    - helper function: referToPivotAs()
         
