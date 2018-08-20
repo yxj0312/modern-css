@@ -83,5 +83,17 @@
         - can also attach to pivot table
 
             -- Play WOW all the day and already 120 --
-    - helper function: referToPivotAs()
+        - helper function: referToPivotAs()
+    - metrics: three types of metrics
+        - value metric
+        - trend metric
+        - partition metric
+        - can be cached
+    - authorization - 1:13:00
+        - can also be used by custom actions/fields
+    - custom
+        - custom tools: create Tool.vue
+        - custom resource tools
+        - custom fields
+        - custom cards
         
