@@ -23,6 +23,7 @@
 
     - a single pageview application
     - using tailwind css
+    - using laravel + vue
     - laravel json api feeding all this data
     - CRUD scenarios (10:13 - 17:41)
     - data field
