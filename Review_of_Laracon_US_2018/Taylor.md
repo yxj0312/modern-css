@@ -94,6 +94,10 @@
     - custom
         - custom tools: create Tool.vue
         - custom resource tools
+            - for example: a stripeInspector
         - custom fields
         - custom cards
-        
+    
+    [Website: https://nova.laravel.com/](https://nova.laravel.com/)
+
+    $99/site for solo, $199/site for team (like Spark)
