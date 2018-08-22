@@ -6,3 +6,6 @@
 
 # Learn Laravel Mix
 ## [Links](https://laracasts.com/series/learn-laravel-mix)
+
+# Testing Laravel
+## [Links](https://laracasts.com/series/phpunit-testing-in-laravel) 
