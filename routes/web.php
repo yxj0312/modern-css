@@ -81,3 +81,7 @@ Route::get('/ep16', function () {
 });
 
 
+// Ep 17#
+Route::get('/ep17', function () {
+    return view('modal');
+});
